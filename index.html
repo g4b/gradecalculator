@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body onload="reset()">
+    <table id="container">
+    </table><br>
+    <input type="text" value="" placeholder="Enter a Category" id="categoryName" width="500px"><br><br>
+    <button class="btn btn-default" onclick="addRow()">Add Row</button>
+    <button class="btn btn-danger" id="calcGrade" onclick="calculateCurrentGrade()">Calculate Grade</button>
+
+    <p id="output"></p>
+</body>
+</html>
