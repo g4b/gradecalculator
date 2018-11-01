@@ -1,16 +1,14 @@
 var ROWCOUNT = 0;
 
 function calculateCurrentGrade() {
-    var gradeCol = document.getElementsByClassName("gradeData");
-    var weightCol = document.getElementsByClassName("percents");
-    var gradeArr = Array.from(gradeCol);
-    console.log(gradeArr);
-    var weightArr = Array.from(weightCol);
-    console.log(weightArr);
+    var grades = document.querySelector("gradeData").value;
+    var weights = document.querySelector("percents").value;
     var total = 0;
-    for (var i = 0; i < gradeArr.length; i++) {
-        total += (gradeArr[i] * weightArr[i]) / 100;
-        console.log(gradeArr[i] * weightArr[i] / 100);
+    console.log(grades);
+    console.log(weights);
+    for (var i = 0; i < grades.length; i++) {
+        total += averageArray(convertArrayStringIntoNumber(grades[i]))*(weights[i]/100);
+        console.log(averageArray(convertArrayStringIntoNumber(grades[i]))*(weights[i]/100));
     }
     document.getElementById("output").innerHTML = total.toString();
 }
@@ -56,7 +54,7 @@ function addRow(){
         var field2 = document.createElement("input");
         field1.setAttribute("type", "text");
         field2.setAttribute("type", "text");
-        field1.className = "grades";
+        field1.className = "gradeData";
         field2.className = "percents";
         table.appendChild(inputRow);
         inputRow.appendChild(inputCell1);
