@@ -1,20 +1,40 @@
 var ROWCOUNT = 0;
 
+function calculateGradeNeeded(){
+    var finalPercent = document.getElementById("finalWeight").value / 100;
+    var nonFinalWeight = 1 - finalPercent;
+    var currentWeighted = document.getElementById("output").value * nonFinalWeight;
+    return (document.getElementById("gradeWanted").value - currentWeighted) / finalPercent;
+}
+
 function calculateCurrentGrade() {
-    var grades = document.querySelector("gradeData").value;
-    var weights = document.querySelector("percents").value;
-    var total = 0;
-    console.log(grades);
-    console.log(weights);
-    for (var i = 0; i < grades.length; i++) {
-        total += averageArray(convertArrayStringIntoNumber(grades[i]))*(weights[i]/100);
-        console.log(averageArray(convertArrayStringIntoNumber(grades[i]))*(weights[i]/100));
+    var grades = document.getElementsByClassName("gradeData");
+    var gradeValues = [];
+    for (var i = 0; i < grades.length; i++){
+        var gradeNumbers = convertArrayStringToNumber(grades[i].value.toString());
+        gradeValues[i] = averageArray(gradeNumbers);
     }
-    document.getElementById("output").innerHTML = total.toString();
+    var weights = document.getElementsByClassName("percents");
+    var weightValues = [];
+    for (var j = 0; j < weights.length; j++){
+        weightValues[j] = (weights[j].value / 100);
+    }
+    var total = 0;
+    for (var k = 0; k < gradeValues.length; k++) {
+        total += gradeValues[k]*weightValues[k];
+    }
+    if (isNaN(total)){
+        alert("The program has failed gracefully. Please reload the page.");
+    } else {
+        document.getElementById("output").innerHTML = total;
+        document.getElementById("finalWeight").style.visibility = "visible";
+        document.getElementById("calcNeeded").style.visibility = "visible";
+        document.getElementById("gradeWanted").style.visibility = "visible";
+    }
 }
 
 function reset(){
-    var table = document.getElementById("container");
+    var table = document.getElementById("gradeWrapper");
     var initRow = document.createElement("tr");
     var initCell1 = document.createElement("td");
     var initCell2 = document.createElement("td");
@@ -27,12 +47,15 @@ function reset(){
     table.appendChild(initRow);
     initRow.appendChild(initCell1);
     initRow.appendChild(initCell2);
-    document.getElementById("calcGrade").style.visibility = "none";
+    document.getElementById("finalWeight").style.visibility = "hidden";
+    document.getElementById("calcNeeded").style.visibility = "hidden";
+    document.getElementById("gradeWanted").style.visibility = "hidden";
+    addRow();
 }
 
 function addRow(){
-    if (ROWCOUNT <= 6) {
-        var table = document.getElementById("container");
+    if (ROWCOUNT <= 4) {
+        var table = document.getElementById("gradeWrapper");
 
         // title row
         var title = document.getElementById("categoryName").value;
@@ -62,25 +85,35 @@ function addRow(){
         inputCell1.appendChild(field1);
         inputCell2.appendChild(field2);
         ROWCOUNT++;
-
+        calcEvenWeight(ROWCOUNT);
     } else {
-        document.getElementById("calcGrade").style.visibility = "visible";
+        document.getElementById("categoryName").style.visibility = "hidden";
+        document.getElementById("addRow").isDisabled = true;
+        document.getElementById("addRow").className("btn btn-secondary");
     }
 }
 
-function convertArrayStringIntoNumber(string){
-    var firstArray = string.split(",");
+function convertArrayStringToNumber(str){
+    var firstArray = str.split(",");
     var secondArray = [];
     for (var i = 0; i < firstArray.length; i++){
-        secondArray += parseInt(firstArray[i]);
+        secondArray[i] = parseInt(firstArray[i]);
     }
     return secondArray;
 }
 
-function averageArray(array){
+function averageArray(arr){
     var sum = 0;
-    for (var i = 0; i < array.length; i++){
-        sum += array[i];
+    for (var i = 0; i < arr.length; i++) {
+        sum += arr[i];
     }
-    return sum / array.length;
+    return sum / arr.length;
+}
+
+function calcEvenWeight(rowCount){
+    var weights = document.getElementsByClassName("percents");
+    var evenWeight = 100 / rowCount;
+    for (var i = 0; i < weights.length; i++){
+        document.getElementsByClassName("percents")[i].value = evenWeight;
+    }
 }

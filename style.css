@@ -1,5 +1,18 @@
-#container {
+#categoryName, #finalContainer, table {
+    margin: auto;
+    width: 150px;
+}
+
+.container {
+    text-align: center;
+}
+
+#gradeWrapper {
     border: 2px solid black;
+}
+
+#addRow, #calcGrade {
+    display: inline-block;
 }
 
 td {

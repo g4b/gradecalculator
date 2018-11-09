@@ -8,11 +8,19 @@
     <script src="script.js"></script>
 </head>
 <body onload="reset()">
-    <table id="container">
+    <table id="gradeWrapper">
     </table><br>
-    <input type="text" value="" placeholder="Enter a Category" id="categoryName"><br><br>
-    <button class="btn btn-default" onclick="addRow()">Add Row</button>
-    <button class="btn btn-danger" id="calcGrade" onclick="calculateCurrentGrade()">Calculate Grade</button>
+    <div class="container">
+        <input type="text" value="Homework" placeholder="Enter a Category" id="categoryName"><br><br>
+        <button class="btn btn-primary" id="addRow" onclick="addRow()">Add Row</button>
+        <button class="btn btn-success" id="calcGrade" onclick="calculateCurrentGrade()">Calculate Grade</button><br>
+    </div>
+
+    <div class="container">
+        <input type="text" id="finalWeight" placeholder="Enter your final grade weight">
+        <input type="text" id="gradeWanted" placeholder="Enter the grade you want in the class"><br>
+        <button class="btn btn-danger" id="calcNeeded" onclick="calculateGradeNeeded()">Calculate Grade Needed</button>
+    </div>
 
     <p id="output"></p>
 </body>
