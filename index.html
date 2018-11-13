@@ -12,16 +12,17 @@
     </table><br>
     <div class="container">
         <input type="text" value="Homework" placeholder="Enter a Category" id="categoryName"><br><br>
-        <button class="btn btn-primary" id="addRow" onclick="addRow()">Add Row</button>
-        <button class="btn btn-success" id="calcGrade" onclick="calculateCurrentGrade()">Calculate Grade</button><br>
+        <button id="addRow" onclick="addRow()">Add Row</button>
+        <button id="calcGrade" onclick="calculateCurrentGrade()">Calculate Grade</button><br>
     </div>
 
     <div class="container">
-        <input type="text" id="finalWeight" placeholder="Enter your final grade weight">
-        <input type="text" id="gradeWanted" placeholder="Enter the grade you want in the class"><br>
+        <input type="text" id="gradeWanted" placeholder="Enter the grade you want in the class">
+        <input type="text" id="finalWeight" placeholder="Enter your final grade weight"><br>
         <button class="btn btn-danger" id="calcNeeded" onclick="calculateGradeNeeded()">Calculate Grade Needed</button>
     </div>
 
-    <p id="output"></p>
+    <p id="currentOutput"></p>
+    <p id="finalOutput"></p>
 </body>
 </html>
