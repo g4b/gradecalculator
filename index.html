@@ -8,21 +8,27 @@
     <script src="script.js"></script>
 </head>
 <body onload="reset()">
-    <table id="gradeWrapper">
-    </table><br>
-    <div class="container">
-        <input type="text" value="Homework" placeholder="Enter a Category" id="categoryName"><br><br>
-        <button id="addRow" onclick="addRow()">Add Row</button>
-        <button id="calcGrade" onclick="calculateCurrentGrade()">Calculate Grade</button><br>
-    </div>
+<br><h1>Grade Calculator</h1><br>
+<p>Welcome to the grade calculator. Please enter your grades in each category as numeric values, separated by a comma. You may add up to 4 categories, which you can name by entering a category name into the textbox below and pressing "Add Row".</p><br>
+<table id="gradeWrapper">
+</table><br>
+<div class="container">
+    <input type="text" class="form-control" value="Homework" placeholder="Enter a Category" id="categoryName"><br><br>
+    <button id="addRow" onclick="addRow()">Add Row</button>
+    <button id="calcGrade" onclick="calculateCurrentGrade()">Calculate Grade</button><br><br>
+</div>
 
-    <div class="container">
-        <input type="text" id="gradeWanted" placeholder="Enter the grade you want in the class">
-        <input type="text" id="finalWeight" placeholder="Enter your final grade weight"><br>
-        <button class="btn btn-danger" id="calcNeeded" onclick="calculateGradeNeeded()">Calculate Grade Needed</button>
-    </div>
+<div id="output">
+    <p>Current grade:</p><p id="currentOutput"></p>
+</div>
 
-    <p id="currentOutput"></p>
-    <p id="finalOutput"></p>
+<br><div class="container">
+    <input type="text" class="form-control" id="gradeWanted" placeholder="Enter the grade you want in the class">
+    <input type="text" class="form-control" id="finalWeight" placeholder="Enter your final grade weight (percent)"><br><br>
+    <button class="btn btn-danger" id="calcNeeded" onclick="calculateGradeNeeded()">Calculate Grade Needed</button>
+</div><br>
+
+<p id="finalOutput"></p>
+
 </body>
 </html>

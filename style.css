@@ -1,20 +1,51 @@
+* {
+    font-family: Didot;
+}
+
+body {
+    background-image: url("https://wallpapercave.com/wp/wp2466428.jpg");
+}
+
 #categoryName, #finalContainer, table {
     margin: auto;
-    width: 150px;
+    width: 200px;
 }
 
 .container {
     text-align: center;
 }
 
+#output, h1, p {
+    color: white;
+    margin: auto;
+}
+
+#output {
+    display: block;
+}
+
+#gradeWanted, #finalWeight {
+    display: inline;
+}
+
+#gradeWanted, #finalWeight, p {
+    width: 270px;
+}
+
 #gradeWrapper {
-    border: 2px solid black;
+    border: 2px solid #e13333;
+}
+
+h1 {
+    font-family: Didot;
+    display: block;
+    width: 278px;
 }
 
 #addRow, #calcGrade {
     display: inline-block;
 }
 
-td {
+p, td {
     text-align: center;
 }
