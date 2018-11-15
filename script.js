@@ -19,8 +19,7 @@ function calculateCurrentGrade() {
     var grades = document.getElementsByClassName("gradeData");
     var gradeValues = [];
     for (var i = 0; i < grades.length; i++){
-        var gradeNumbers = convertArrayStringToNumber(grades[i].value.toString());
-        gradeValues[i] = averageArray(gradeNumbers);
+        gradeValues[i] = averageArray(convertArrayStringToNumber(grades[i].value.toString()));
         if (gradeValues[i] > 120){
             alert("One of your grade values is too high. Please change it to be lower than 120.");
             return null;
